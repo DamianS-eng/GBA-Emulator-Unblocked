@@ -32,8 +32,11 @@ ul, ol, nav, menu {
 ul li {
   margin-block: 1rem;
   font-size: clamp(12px, 5svw + .1rem, 24px);
+  transition: background-color var(--time) ease-in-out;
 }
-
+ul li:focus-within {
+    --clr-bg: white;
+}
 ul li a {
   text-decoration: none;
 }
@@ -54,9 +57,13 @@ main ul {
 
 #top {
   text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 @media(hover:hover) {
+  ul li:hover {
+    --clr-bg: white;
+  }
   ul li:hover a {
   text-decoration: underline;
   }
