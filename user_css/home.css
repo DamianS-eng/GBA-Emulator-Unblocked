@@ -13,6 +13,17 @@ html {
   background: var(--clr-bg);
   color: var(--clr-txt);
 }
+#top label {
+  font-size: 2rem;
+  font-family: sans-serif;
+}
+#top label input {
+  --clr-bg: white;
+  font-size: 2rem;
+  font-family: sans-serif;
+  padding: 1rem;
+  border-radius: .25rem;
+}
 ul, ol, nav, menu {
   list-style: none;
   padding: 0;
@@ -69,5 +80,9 @@ main ul {
   }
   main ul {
     --clr-bg: rgb(117, 68, 145);
+  }
+  #top label input {
+    --clr-bg: #aaa;
+    --clr-txt: #111;
   }
 }
