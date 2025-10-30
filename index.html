@@ -52,7 +52,7 @@
           <h2>For Info On: Game Collections, Controls, And Some Other Cool Stuff. Check Out The Wiki: <a href="#" target="_blank"><img src="./Binaries/here.png" alt="here"></a></h2>
         </footer>
     </body>
-    <script defer>
+    <script>
         /*
             get the list of binaries as an array of objects and store in a const
 
@@ -61,12 +61,18 @@
             Next, import that list as an array into const gamesList.
             
         */
-        const gamesList = [
-            ];
+        let gamesList = [];
+        fetch('/binary_list.json')
+            .then(res => res.text())
+            .then(text => {
+                gamesList = JSON.parse(text)
+                console.log(gamesList)
+            }).catch(err => console.error("Error: ", err));
 
         function insertGames(list) {
             const docfrag = document.createDocumentFragment();
             list.forEach((i) {
+                console.log(i);
                 const li = document.createElement('li');
                 const anchor = document.createElement('a');
                 anchor.href = '#';
