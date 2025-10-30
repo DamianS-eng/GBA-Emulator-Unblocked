@@ -54,9 +54,14 @@
         <script>
             let gamesList = [];
             fetch('/binary_list.json')
-                .then(res => res.text())
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error('HTTP error! status: ${res.status}')'
+                    }
+                    return res.json();
+                })
                 .then(text => {
-                    gamesList = JSON.parse(text)
+                    gamesList = text;
                     console.log(gamesList)
                 }).catch(err => console.error("Error: ", err));
             function insertGames(list) {
