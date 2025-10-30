@@ -5,8 +5,8 @@ permissions:
 
 on:
   push:
-    paths-ignore:
-      - 'binary_list.json'
+    paths:
+      - 'Binaries/**'
 
 jobs:
   list-files:
