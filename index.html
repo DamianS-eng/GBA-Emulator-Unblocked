@@ -59,8 +59,8 @@
             Because all of the binaries are in a neighboring directory, there should be a way to parse that directory, then create a list of js objects whose keys are the correct filename and (for now) an empty string keyed to the game name.
             The user is responsible for manually reviewing the generated list and appending the proper game name. 
             Next, import that list as an array into const gamesList.
-            
         */
+
         let gamesList = [];
         fetch('/binary_list.json')
             .then(res => res.text())
@@ -82,22 +82,19 @@
             });
             return docfrag;
         }
-        
-        /*
+            /*
             query list element. if it exists, append all binaries to element. all these are a list item with a link to the binary file name and a searchable name
-        */
+            */
         const gameListEle = document.querySelector('#game-list');
         gameListEle?.appendChild(insertGames(gamesList));
-        /*
-
-        /*
+            /*
             query the search element, then add an input event listener for filter function
-        */
+            */
             
             const searchEle = document.querySelector('#game-search');
-        /*
+            /*
             filter function. Query all games in list.
-            
+            */
             searchEle?.addEventListener('input', function (e) {
                 const searchValue = searchEle.value;
                 const allGames = gamesList.querySelectorAll('.game');
@@ -109,8 +106,7 @@
                     }
                 })
             });
-            
+          */  
         */
-        
     </script>
 </html>
