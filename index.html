@@ -61,7 +61,7 @@
                 }).catch(err => console.error("Error: ", err));
             function insertGames(list) {
                 const docfrag = document.createDocumentFragment();
-                list.forEach((i) {
+                list.forEach((i) => {
                     console.log(i);
                     const li = document.createElement('li');
                     const anchor = document.createElement('a');
