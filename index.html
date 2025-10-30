@@ -71,7 +71,9 @@
             function getGamesList() {
                 return fetch(binaryList)
                 .then(res => {
-                    if (!res.ok) throw New Error('HTTP error! status: ${res.status}');
+                    if (!res.ok) {
+                        throw New Error('HTTP error! status: ' + res.status);
+                    }
                     return res.json();
                 })
                 .then(text => {
