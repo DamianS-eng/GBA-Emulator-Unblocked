@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DIR: ./Binaries
-      OUTFILE: binary_list.js
+      OUTFILE: binary_list.json
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
