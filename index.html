@@ -52,18 +52,9 @@
           <h2>For Info On: Game Collections, Controls, And Some Other Cool Stuff. Check Out The Wiki: <a href="#" target="_blank"><img src="./Binaries/here.png" alt="here"></a></h2>
         </footer>
         <script>
+            const binaryList = "/binary_list.json"
             let gamesList = [];
-            fetch('/binary_list.json')
-                .then(res => {
-                    if (!res.ok) {
-                        throw new Error('HTTP error! status: ${res.status}');
-                    }
-                    return res.json();
-                })
-                .then(text => {
-                    gamesList = text;
-                    console.log(gamesList)
-                }).catch(err => console.error("Error: ", err));
+            const gameListEle = document.querySelector('#game-list');
             function insertGames(list) {
                 const docfrag = document.createDocumentFragment();
                 list.forEach((i) => {
@@ -77,8 +68,21 @@
                 });
                 return docfrag;
             }
-            const gameListEle = document.querySelector('#game-list');
-            gameListEle?.appendChild(insertGames(gamesList));
+            function getGamesList() {
+                return fetch(binaryList)
+                .then(res => {
+                    if (!res.ok) throw New Error('HTTP error! status: ${res.status}');
+                    return res.json();
+                })
+                .then(text => {
+                    console.log(text)
+                    gamesList = text;
+                    return text;
+                }).catch(err => { console.error("Error: ", err)});
+            }
+            getGamesList().then(() => {
+                gameListEle?.appendChild(insertGames(gamesList));
+            });
             const searchEle = document.querySelector('#game-search');
             searchEle?.addEventListener('input', function (e) {
                 const searchValue = searchEle.value;
