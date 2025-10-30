@@ -58,11 +58,11 @@
             function insertGames(list) {
                 const docfrag = document.createDocumentFragment();
                 list.forEach((i) => {
-                    console.log(i);
+                    //console.log(i);
                     const li = document.createElement('li');
                     const anchor = document.createElement('a');
-                    anchor.href = '#';
-                    anchor.alt = '#';
+                    anchor.href = './launcher.html#' + i.filename;
+                    anchor.innerText = (i.title === "") ? i.filename : i.title;
                     li.appendChild(anchor);
                     docfrag.appendChild(li);
                 });
