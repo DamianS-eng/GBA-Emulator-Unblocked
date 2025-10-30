@@ -4,7 +4,9 @@ permissions:
   contents: write
 
 on:
-  push
+  push:
+    paths-ignore:
+      - 'binary_list.json'
 
 jobs:
   list-files:
