@@ -23,8 +23,8 @@ jobs:
           COUNT=$(find "$DIR" -type f -name '*.gba' | wc -l)
           echo "There are $COUNT binaries found."
           echo "[" > $"OUTFILE"
-          find "$DIR" -type f -name '*.gba' -exec basename {} .gba \; | awk '{printf " { filename: \%s\", title: \"\" |, \n", $0 >> $"OUTFILE"
-          sed -i '$ s/}/}/' $"OUTFILE"
+          find "$DIR" -type f -name '*.gba' -exec basename {} .gba \; | awk '{printf "  { filename: \"%s\", title: \"\" },\n", $0}' >> $"OUTFILE"
+          sed -i '$ s/},/}/' $"OUTFILE"
           echo "]" >> $"OUTFILE"
           echo "List written to $OUTFILE"
       - name: Commit and push file list
