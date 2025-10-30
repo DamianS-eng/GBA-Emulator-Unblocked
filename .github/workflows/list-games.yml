@@ -1,0 +1,38 @@
+name: List Binaries in Directory
+
+permissions:
+  contents: write
+
+on:
+  push:
+    paths-ignore:
+      - 'binary_list.json'
+
+jobs:
+  list-files:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    env:
+      DIR: ./Binaries
+      OUTFILE: binary_list.json
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Count and list files
+        run: |
+          COUNT=$(find "$DIR" -type f -name '*.gba' | wc -l)
+          echo "There are $COUNT binaries found."
+          echo "[" > $OUTFILE
+          find "$DIR" -type f -name '*.gba' -exec basename {} .gba \; | awk '{printf "  {\n    \"filename\": \"%s\", \n    \"title\": \"\" \n  },\n", $0}' >> $OUTFILE
+          sed -i '$ s/},/}/' $OUTFILE
+          echo "]" >> $OUTFILE
+          echo "List written to $OUTFILE"
+      - name: Commit and push file list
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$OUTFILE"
+          git commit -m "Update $OUTFILE" || echo "No changes to commit"
+          git push

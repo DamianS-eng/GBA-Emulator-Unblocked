@@ -13,6 +13,17 @@ html {
   background: var(--clr-bg);
   color: var(--clr-txt);
 }
+#top label {
+  font-size: 2rem;
+  font-family: sans-serif;
+}
+#top label input {
+  --clr-bg: white;
+  font-size: 2rem;
+  font-family: sans-serif;
+  padding: 1rem;
+  border-radius: .25rem;
+}
 ul, ol, nav, menu {
   list-style: none;
   padding: 0;
@@ -21,8 +32,11 @@ ul, ol, nav, menu {
 ul li {
   margin-block: 1rem;
   font-size: clamp(12px, 5svw + .1rem, 24px);
+  transition: background-color var(--time) ease-in-out;
 }
-
+ul li:focus-within {
+    --clr-bg: white;
+}
 ul li a {
   text-decoration: none;
 }
@@ -43,9 +57,13 @@ main ul {
 
 #top {
   text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 @media(hover:hover) {
+  ul li:hover {
+    --clr-bg: white;
+  }
   ul li:hover a {
   text-decoration: underline;
   }
@@ -69,5 +87,9 @@ main ul {
   }
   main ul {
     --clr-bg: rgb(117, 68, 145);
+  }
+  #top label input {
+    --clr-bg: #aaa;
+    --clr-txt: #111;
   }
 }
