@@ -1,0 +1,73 @@
+:root {
+  --clr-bg: rgb(248, 237, 224);
+  --clr-txt: black;
+  --time: 200ms;
+}
+html {
+  color-scheme: light dark;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+*, *::before, *::after {
+  background: var(--clr-bg);
+  color: var(--clr-txt);
+}
+ul, ol, nav, menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  margin-block: 1rem;
+  font-size: clamp(12px, 5svw + .1rem, 24px);
+}
+
+ul li a {
+  text-decoration: none;
+}
+ul li:focus-within a {
+  text-decoration: underline;
+}
+p {
+  text-align: center;
+}
+main ul {
+  --clr-bg: rgb(248, 237, 210);
+  max-width: 70ch;
+  margin-inline: auto;
+  border: .4ch black solid; 
+  border-radius: 2rem; 
+  padding-inline: 1.25rem;
+}
+
+#top {
+  text-align: center;
+}
+
+@media(hover:hover) {
+  ul li:hover a {
+  text-decoration: underline;
+  }
+}
+@supports(display: grid) {
+  body, main {
+    display: grid;
+  }
+  body {
+    height: calc(100svh - 1rem);
+    place-items: center;
+  }    
+}
+@media(prefers-color-scheme: dark) {
+  :root {
+    --clr-bg: black;
+    --clr-txt: white;
+  }
+  html {
+    color-scheme: dark;
+  }
+  main ul {
+    --clr-bg: rgb(117, 68, 145);
+  }
+}
