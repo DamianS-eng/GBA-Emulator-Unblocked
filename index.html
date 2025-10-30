@@ -93,10 +93,10 @@
             });
             
             const searchEle = document.querySelector('#game-search');
-            if (searchEle) {
+            if (searchEle && gameListEle) {
                 searchEle.addEventListener('input', function (e) {
                     const searchValue = searchEle.value;
-                    const allGames = gamesListEle.querySelectorAll('.game');
+                    const allGames = gameListEle.querySelectorAll('.game');
                     allGames.forEach((i) => {
                         const nameEle = i.querySelector('.game-name');
                         i.style.display = 'none';
