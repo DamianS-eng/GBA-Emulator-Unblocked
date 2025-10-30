@@ -17,7 +17,7 @@ jobs:
       - name: Count and list files
         run: |
           COUNT=$(find "$DIR" -type f -name '*.gba' | wc -l)
-          echo "There are $COUNT binaries found.
+          echo "There are $COUNT binaries found."
           find "$DIR" -type f -name '*.gba' > "$OUTFILE"
           echo "List written to $OUTFILE"
       - name: Commit and push file list
