@@ -1,10 +1,14 @@
 name: List Binaries in Directory
 
+permissions:
+  contents: write
+
 on:
   push
 
 jobs:
   list-files:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     env:
       DIR: ./Binaries
