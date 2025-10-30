@@ -67,36 +67,43 @@
                     docfrag.appendChild(li);
                 });
                 return docfrag;
-            }
+            };
             function getGamesList() {
                 return fetch(binaryList)
                 .then(res => {
                     if (!res.ok) {
-                        throw New Error('HTTP error! status: ' + res.status);
+                        throw new Error('HTTP error! status: ${res.status}');
                     }
                     return res.json();
-                })
-                .then(text => {
-                    console.log(text)
+                }).then(text => {
                     gamesList = text;
-                    return text;
-                }).catch(err => { console.error("Error: ", err)});
+                    console.log(gamesList);
+                    return gamesList;
+                }).catch(err => {
+                    console.error("Error loading JSON:", err);
+                });
             }
+            
             getGamesList().then(() => {
-                gameListEle?.appendChild(insertGames(gamesList));
+                if(gameListEle) {
+                    gameListEle.appendChild(insertGames(gamesList));
+                }
             });
+            
             const searchEle = document.querySelector('#game-search');
-            searchEle?.addEventListener('input', function (e) {
-                const searchValue = searchEle.value;
-                const allGames = gamesList.querySelectorAll('.game');
-                allGames.forEach((i) => {
-                    const nameEle = i.querySelector('.game-name');
-                    i.style.display = 'none';
-                    if (nameEle.innerText.toLowerCase().includes(searchValue.toLowerCase())) {
-                        i.style.display = 'block';
-                    }
-                })
-            });            
+            if (searchEle) {
+                searchEle.addEventListener('input', function (e) {
+                    const searchValue = searchEle.value;
+                    const allGames = gamesList.querySelectorAll('.game');
+                    allGames.forEach((i) => {
+                        const nameEle = i.querySelector('.game-name');
+                        i.style.display = 'none';
+                        if (nameEle.innerText.toLowerCase().includes(searchValue.toLowerCase())) {
+                            i.style.display = 'block';
+                        }
+                    })
+                });
+            }
         </script>
     </body>
     
