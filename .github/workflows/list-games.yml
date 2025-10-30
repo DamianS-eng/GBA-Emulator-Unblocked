@@ -22,7 +22,7 @@ jobs:
         run: |
           COUNT=$(find "$DIR" -type f -name '*.gba' | wc -l)
           echo "There are $COUNT binaries found."
-          find "$DIR" -type f -name '*.gba' > "$OUTFILE"
+          find "$DIR" -type f -name '*.gba' -exec basename {} .gba \; > "$OUTFILE"
           echo "List written to $OUTFILE"
       - name: Commit and push file list
         run: |
