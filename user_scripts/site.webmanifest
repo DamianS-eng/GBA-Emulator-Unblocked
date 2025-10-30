@@ -1,0 +1,32 @@
+{
+    "name": "Game Boy Advance Emulator",
+    "short_name": "GBA",
+    "icons": [
+        {
+            "src": "./Binaries/gb.ico",
+            "sizes": "any"
+        },
+        {
+            "src": "./Binaries/gb.ico",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        },
+	{
+	    "src":"./Binaries/gb.ico",
+	    "sizes":"192x192",
+	    "type":"image/svg+xml"
+	},
+	{
+	    "src":"./Binaries/gb.ico",
+	    "sizes":"512x512",
+	    "type":"image/svg+xml"
+	}
+    ],
+    "categories": ["emualtion", "video games", "nintendo"],
+    "description": "A web app Game Boy Advance emulator",
+    "start_url": "../",
+    "theme_color": "#8000d0",
+    "background_color": "#112211",
+    "display": "standalone",
+    "orientation": "natural"
+}
